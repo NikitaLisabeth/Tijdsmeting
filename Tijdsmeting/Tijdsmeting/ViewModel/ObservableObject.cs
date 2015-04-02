@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Tijdsmeting
 {
-    class ObservableObject
+    class ObservableObject : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

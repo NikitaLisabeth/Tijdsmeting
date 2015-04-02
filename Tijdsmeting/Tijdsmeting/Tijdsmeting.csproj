@@ -100,9 +100,14 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Runner.cs" />
     <Compile Include="ViewModel\ApplicationVM.cs" />
+    <Compile Include="ViewModel\FocusExtension.cs" />
     <Compile Include="ViewModel\PageOneVM.cs" />
+    <Compile Include="ViewModel\RegistrationVM.cs" />
     <Compile Include="View\PageOne.xaml.cs">
       <DependentUpon>PageOne.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Registration.xaml.cs">
+      <DependentUpon>Registration.xaml</DependentUpon>
     </Compile>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -119,6 +124,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\PageOne.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Registration.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -12,6 +12,7 @@ namespace Tijdsmeting.ViewModel
     {
         public ApplicationVM()
         {
+            Pages.Add(new RegistrationVM());
             Pages.Add(new PageOneVM());
             // Add other pages
 
