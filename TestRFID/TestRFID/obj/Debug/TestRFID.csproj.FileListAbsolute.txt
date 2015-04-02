@@ -24,3 +24,5 @@ C:\Users\Nikita\OneDrive\2NMCT\Semester 2\Datacommunication\Tijdsmeting\TestRFID
 C:\Users\Nikita\OneDrive\2NMCT\Semester 2\Datacommunication\Tijdsmeting\TestRFID\TestRFID\obj\Debug\TestRFID.g.resources
 C:\Users\Nikita\OneDrive\2NMCT\Semester 2\Datacommunication\Tijdsmeting\TestRFID\TestRFID\obj\Debug\TestRFID.Properties.Resources.resources
 C:\Users\Nikita\OneDrive\2NMCT\Semester 2\Datacommunication\Tijdsmeting\TestRFID\TestRFID\obj\Debug\TestRFID.csproj.GenerateResource.Cache
+C:\Users\Nikita\OneDrive\2NMCT\Semester 2\Datacommunication\Tijdsmeting\TestRFID\TestRFID\obj\Debug\WindowWedstrijd.baml
+C:\Users\Nikita\OneDrive\2NMCT\Semester 2\Datacommunication\Tijdsmeting\TestRFID\TestRFID\obj\Debug\WindowWedstrijd.g.cs

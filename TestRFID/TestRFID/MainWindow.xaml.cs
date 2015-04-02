@@ -43,6 +43,8 @@ namespace TestRFID
             set { _image = value; }
         }
 
+
+
         private void Save()
         {
             string barcode = txbBarcode.Text;
@@ -67,7 +69,6 @@ namespace TestRFID
             {
                 lstListRunners.Items.Add(Runner.Value);
             }
-            //Runners.Clear();
         }
 
         #region Camera
@@ -114,11 +115,6 @@ namespace TestRFID
                     }
                 }));
         }
-
-        void Image_DownloadCompleted(object sender, EventArgs e)
-        {
-            Console.WriteLine("download completed");
-        }
         private BitmapImage ToImage(byte[] array)
         {
             using (var ms = new System.IO.MemoryStream(array))
@@ -131,19 +127,6 @@ namespace TestRFID
                 return image;
             }
         }
-
-
-        //void objImage_DownloadCompleted(object sender, EventArgs e)
-        //{
-        //    JpegBitmapEncoder encoder = new JpegBitmapEncoder();
-        //    Guid photoID = System.Guid.NewGuid();
-        //    String photolocation = photoID.ToString() + ".jpg";  //file name 
-
-        //    encoder.Frames.Add(BitmapFrame.Create((BitmapImage)sender));
-
-        //    using (var filestream = new FileStream(photolocation, FileMode.Create))
-        //        encoder.Save(filestream);
-        //}
 
         #endregion
 
@@ -188,10 +171,10 @@ namespace TestRFID
             timer.Stop();
         }
 
-       
-
-       
-
-       
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            WindowWedstrijd win = new WindowWedstrijd();
+            win.Show();
+        }
     }
 }

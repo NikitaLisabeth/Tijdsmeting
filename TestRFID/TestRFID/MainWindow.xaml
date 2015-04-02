@@ -18,10 +18,11 @@
         <TextBox Name="txbRFID" Margin="10" Grid.Row="1" />
         <Image x:Name="imgScreen" Grid.Column="0" Grid.Row="2" Grid.RowSpan="2" Margin="5" Grid.ColumnSpan="1"/>
         <Button Grid.Column="1" Grid.Row="1" Content="Take picture" Margin="77.8,10,108.4,10" Click="Button_Click_1"  />
-        <Button Grid.Column="1" Content="Save" Margin="9.8,10,131.4,10" Click="Button_Click" />
+        <Button Grid.Column="1" Content="Save" Margin="9.8,10,167.4,10" Click="Button_Click" />
         <Button Grid.Column="1" Grid.Row="1" Content="set camera" Margin="9.8,10,186.4,10" Click="Button_Click_2"  />
-        <Button Content="Einde Registratie" Grid.Column="1" HorizontalAlignment="Left" Margin="132.8,10,0,0" VerticalAlignment="Top" Width="116" Height="60" Click="Button_Click_3"/>
+        <Button Content="Einde Registratie" Grid.Column="1" HorizontalAlignment="Left" Margin="96.8,10,0,0" VerticalAlignment="Top" Width="103" Height="60" Click="Button_Click_3"/>
         <ListBox Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" Name="lstListRunners"/>
         <Button Content="Save Picture" Grid.Column="1" HorizontalAlignment="Left" Margin="155.8,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="89" Height="60" Click="Button_Click_4"/>
+        <Button Content="Next" Grid.Column="1" HorizontalAlignment="Left" Height="60" Margin="204.8,10,0,0" VerticalAlignment="Top" Width="44" Click="Button_Click_5"/>
     </Grid>
 </Window>

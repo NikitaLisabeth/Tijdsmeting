@@ -29,14 +29,14 @@ namespace Tijdsmeting.Migrations
             //
             context.Runners.AddOrUpdate(
                 r => r.Name,
-                    new Runner { Name = "Skiridov", Firstname = "Sergey" },
-                    new Runner { Name = "Lisabeth", Firstname = "Nikita" },
-                    new Runner { Name = "Cruise", Firstname = "Tom" },
-                    new Runner { Name = "Hanks", Firstname = "Tom" },
-                    new Runner { Name = "Everdeen", Firstname = "Katniss" },
-                    new Runner { Name = "Jolie", Firstname = "Angelina" },
-                    new Runner { Name = "Barack", Firstname = "Obama" },
-                    new Runner { Name = "Lemmens", Firstname = "Ann" }
+                    new Runner { Name = "Skiridov", Firstname = "Sergey", Barcode="runner001" },
+                    new Runner { Name = "Lisabeth", Firstname = "Nikita", Barcode = "runner002" },
+                    new Runner { Name = "Cruise", Firstname = "Tom", Barcode = "runner003" },
+                    new Runner { Name = "Hanks", Firstname = "Tom", Barcode = "runner004" },
+                    new Runner { Name = "Everdeen", Firstname = "Katniss", Barcode = "runner005" },
+                    new Runner { Name = "Jolie", Firstname = "Angelina", Barcode = "runner006" },
+                    new Runner { Name = "Barack", Firstname = "Obama", Barcode = "runner007" },
+                    new Runner { Name = "Lemmens", Firstname = "Ann", Barcode = "runner008" }
             );
 
             context.SaveChanges();
