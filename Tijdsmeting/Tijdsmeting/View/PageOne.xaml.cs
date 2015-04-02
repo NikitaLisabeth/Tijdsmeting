@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Datacommunicatie_Tijdsmeting
+namespace Tijdsmeting.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for PageOne.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class PageOne : UserControl
     {
-        public MainWindow()
+        public PageOne()
         {
             InitializeComponent();
         }

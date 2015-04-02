@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Datacommunicatie_Tijdsmeting.Properties
+namespace Tijdsmeting.Properties
 {
 
 

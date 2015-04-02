@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Datacommunicatie_Tijdsmeting.Properties
+namespace Tijdsmeting.Properties
 {
 
 
@@ -44,7 +44,7 @@ namespace Datacommunicatie_Tijdsmeting.Properties
             {
                 if ((resourceMan == null))
                 {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Datacommunicatie_Tijdsmeting.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Tijdsmeting.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
