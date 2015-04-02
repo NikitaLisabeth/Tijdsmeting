@@ -11,3 +11,16 @@ C:\Users\Nikita\OneDrive\2NMCT\Semester 2\Datacommunication\TestRFID\TestRFID\ob
 C:\Users\Nikita\OneDrive\2NMCT\Semester 2\Datacommunication\TestRFID\TestRFID\obj\Debug\TestRFID.csproj.GenerateResource.Cache
 C:\Users\Nikita\OneDrive\2NMCT\Semester 2\Datacommunication\TestRFID\TestRFID\obj\Debug\TestRFID.exe
 C:\Users\Nikita\OneDrive\2NMCT\Semester 2\Datacommunication\TestRFID\TestRFID\obj\Debug\TestRFID.pdb
+C:\Users\Nikita\OneDrive\2NMCT\Semester 2\Datacommunication\Tijdsmeting\TestRFID\TestRFID\bin\Debug\TestRFID.exe.config
+C:\Users\Nikita\OneDrive\2NMCT\Semester 2\Datacommunication\Tijdsmeting\TestRFID\TestRFID\obj\Debug\TestRFID.exe
+C:\Users\Nikita\OneDrive\2NMCT\Semester 2\Datacommunication\Tijdsmeting\TestRFID\TestRFID\obj\Debug\TestRFID.pdb
+C:\Users\Nikita\OneDrive\2NMCT\Semester 2\Datacommunication\Tijdsmeting\TestRFID\TestRFID\bin\Debug\TestRFID.exe
+C:\Users\Nikita\OneDrive\2NMCT\Semester 2\Datacommunication\Tijdsmeting\TestRFID\TestRFID\bin\Debug\TestRFID.pdb
+C:\Users\Nikita\OneDrive\2NMCT\Semester 2\Datacommunication\Tijdsmeting\TestRFID\TestRFID\obj\Debug\TestRFID.csprojResolveAssemblyReference.cache
+C:\Users\Nikita\OneDrive\2NMCT\Semester 2\Datacommunication\Tijdsmeting\TestRFID\TestRFID\obj\Debug\MainWindow.baml
+C:\Users\Nikita\OneDrive\2NMCT\Semester 2\Datacommunication\Tijdsmeting\TestRFID\TestRFID\obj\Debug\MainWindow.g.cs
+C:\Users\Nikita\OneDrive\2NMCT\Semester 2\Datacommunication\Tijdsmeting\TestRFID\TestRFID\obj\Debug\App.g.cs
+C:\Users\Nikita\OneDrive\2NMCT\Semester 2\Datacommunication\Tijdsmeting\TestRFID\TestRFID\obj\Debug\TestRFID_MarkupCompile.cache
+C:\Users\Nikita\OneDrive\2NMCT\Semester 2\Datacommunication\Tijdsmeting\TestRFID\TestRFID\obj\Debug\TestRFID.g.resources
+C:\Users\Nikita\OneDrive\2NMCT\Semester 2\Datacommunication\Tijdsmeting\TestRFID\TestRFID\obj\Debug\TestRFID.Properties.Resources.resources
+C:\Users\Nikita\OneDrive\2NMCT\Semester 2\Datacommunication\Tijdsmeting\TestRFID\TestRFID\obj\Debug\TestRFID.csproj.GenerateResource.Cache
