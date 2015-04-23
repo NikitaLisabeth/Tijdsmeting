@@ -5,19 +5,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:vm="clr-namespace:Tijdsmeting.ViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="300">
+             d:DesignHeight="350" d:DesignWidth="525">
     <UserControl.DataContext>
         <vm:RegistrationVM/>
     </UserControl.DataContext>
     <Grid FocusManager.FocusedElement="{Binding ElementName=txbBarcode}">
         <Grid.RowDefinitions>
+            <RowDefinition Height="47*"/>
+            <RowDefinition Height="47*"/>
+
             <RowDefinition Height="44*"/>
             <RowDefinition Height="47*"/>
             <RowDefinition Height="41*"/>
             <RowDefinition Height="68*"/>
         </Grid.RowDefinitions>
-        <TextBox  Text="{Binding Path=Barcode , UpdateSourceTrigger=PropertyChanged}" Name="txbBarcode"  Margin="10"/>
-        <TextBox vm:FocusExtension.IsFocused="{Binding IsUserNameFocused}" Text="{Binding Path=RFID}"  Name="txbRFID" Margin="10,10,10,8.2" Grid.Row="1" />
-        <Button  Grid.Row="2" Margin="10" Name="btnSave" Content="Save" Command="{Binding SaveCommand}"/>
+        <TextBlock Text="Barcode: " Margin="5" VerticalAlignment="Center" />
+        <TextBlock Grid.Row="2" Margin="5" Text="RFID: " VerticalAlignment="Center" />
+
+        <TextBox Grid.Row="1"  Text="{Binding Path=Barcode , UpdateSourceTrigger=PropertyChanged}" Name="txbBarcode"  Margin="5"/>
+        <TextBox Grid.Row="3" vm:FocusExtension.IsFocused="{Binding IsUserNameFocused}" Text="{Binding Path=RFID}"  Name="txbRFID" Margin="5" />
+        <Button  Grid.Row="5" Margin="5" Name="btnSave" Content="Save" Command="{Binding SaveCommand}"/>
     </Grid>
 </UserControl>

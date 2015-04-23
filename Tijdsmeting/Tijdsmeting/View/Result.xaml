@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="Tijdsmeting.View.Result"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:Tijdsmeting.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="350" d:DesignWidth="525">
+    <UserControl.DataContext>
+        <vm:ResultVM/>
+    </UserControl.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Results" FontSize="35" Margin="5" VerticalAlignment="Center"/>
+        <ListBox ItemsSource="{Binding Runners}" Grid.Row="1" Margin="5" />
+    </Grid>
+</UserControl>

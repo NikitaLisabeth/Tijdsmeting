@@ -13,7 +13,8 @@ namespace Tijdsmeting.ViewModel
         public ApplicationVM()
         {
             Pages.Add(new RegistrationVM());
-            Pages.Add(new PageOneVM());
+            Pages.Add(new CompetitionVM());
+            //Pages.Add(new PageOneVM());
             // Add other pages
 
             CurrentPage = Pages[0];
@@ -42,7 +43,7 @@ namespace Tijdsmeting.ViewModel
             get { return new RelayCommand<IPage>(ChangePage); }
         }
 
-        private void ChangePage(IPage page)
+        public void ChangePage(IPage page)
         {
             CurrentPage = page;
         }

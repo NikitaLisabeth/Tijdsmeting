@@ -3,23 +3,24 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:v="clr-namespace:Tijdsmeting.View"
         xmlns:vm="clr-namespace:Tijdsmeting.ViewModel"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="600" Width="525">
     <Window.DataContext>
         <vm:ApplicationVM/>
     </Window.DataContext>
     <Window.Resources>
-        <DataTemplate DataType="{x:Type vm:PageOneVM}">
-            <v:PageOne/>
-        </DataTemplate>
+        
         <DataTemplate DataType="{x:Type vm:RegistrationVM}">
             <v:Registration/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:CompetitionVM}">
+            <v:Competition/>
         </DataTemplate>
     </Window.Resources>
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="9*"/>
         </Grid.RowDefinitions>
         
         <ItemsControl ItemsSource="{Binding Pages}">
@@ -28,6 +29,11 @@
                         <Button Content="{Binding Name}" Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding}"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
         </ItemsControl>
 
         <ContentControl Grid.Row="1" Content="{Binding CurrentPage}"/>

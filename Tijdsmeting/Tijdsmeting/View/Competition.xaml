@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="Tijdsmeting.View.Competition"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:Tijdsmeting.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="350" d:DesignWidth="525">
+    <UserControl.DataContext>
+        <vm:CompetitionVM/>
+    </UserControl.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
+        <Button Content="Start" FontSize="20" Margin="5" Command="{Binding StartCommand}" />
+        <Button Content="Stop" FontSize="20" Margin="5" Command="{Binding StopCommand}" Grid.Row="1" />
+        <TextBlock Text="Now checked: " Grid.Row="2" VerticalAlignment="Center" Margin="5" FontSize="16"/>
+        <TextBox vm:FocusExtension.IsFocused="{Binding IsFocussed}"  Grid.Column="1" Text="{Binding CheckedRFID , UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" VerticalAlignment="Center" Margin="5" FontSize="16"/>
+        <TextBlock Grid.RowSpan="2" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Path=Timer , UpdateSourceTrigger=PropertyChanged}"  Grid.Column="1" />
+        <DataGrid Grid.Row="3" Grid.ColumnSpan="2"  ItemsSource="{Binding Runners}" CanUserSortColumns="False" CanUserResizeColumns="False" CanUserReorderColumns="False" AutoGenerateColumns="False" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" ClipboardContentBinding="{x:Null}"/>
+                <DataGridTextColumn Header="First name" Binding="{Binding Firstname}" ClipboardContentBinding="{x:Null}"/>
+                <DataGridTextColumn Header="Checkpoint 1" Binding="{Binding Checkpoint1}" ClipboardContentBinding="{x:Null}"/>
+                <DataGridTextColumn Header="Checkpoint 2" Binding="{Binding Checkpoint2}" ClipboardContentBinding="{x:Null}"/>
+                <DataGridTextColumn Header="Finish" Binding="{Binding Finish}" ClipboardContentBinding="{x:Null}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

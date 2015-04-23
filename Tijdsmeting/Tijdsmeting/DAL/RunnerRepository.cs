@@ -29,6 +29,16 @@ namespace Tijdsmeting.DAL
             }
         }
 
+        public Runner GetRunnerByRFID(string rfid)
+        {
+            using (ApplicationDbContext context = new ApplicationDbContext())
+            {
+                var query = (from r in context.Runners where r.RFID.Equals(rfid) select r);
+
+                return query.SingleOrDefault<Runner>();
+            }
+        }
+
         public void UpdateRunner(Runner runner)
         {
             using (ApplicationDbContext context = new ApplicationDbContext())

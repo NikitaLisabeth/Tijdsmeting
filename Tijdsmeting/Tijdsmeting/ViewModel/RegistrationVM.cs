@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
+using Tijdsmeting.DAL;
+using Tijdsmeting.Model;
 
 namespace Tijdsmeting.ViewModel
 {
@@ -57,13 +59,27 @@ namespace Tijdsmeting.ViewModel
         {
             try
             {
+
                 Console.WriteLine(RFID + " " + Barcode);
                 Runners.Add(RFID, Barcode);
+                Runner runPerson = new Runner();                
+                RunnerRepository rep = new RunnerRepository();
+                runPerson = rep.GetRunnerByBarcode(Barcode);
+                if (runPerson.RFID != null)
+                {
+                    MessageBox.Show("U bent al geregistreerd!");
+                }
+                else
+                {
+                    runPerson.RFID = RFID;
+                    rep.UpdateRunner(runPerson);
+                }
             }
             catch (Exception)
             {
                 MessageBox.Show("Gelieve de waarden te controleren");
             }
+            
             Barcode = "";
             RFID = "";
         }
