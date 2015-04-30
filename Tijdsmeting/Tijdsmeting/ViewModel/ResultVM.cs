@@ -18,6 +18,7 @@ namespace Tijdsmeting.ViewModel
         public ResultVM()
         {
             getRunners();
+
         }
         private List<Runner> _runners;
 

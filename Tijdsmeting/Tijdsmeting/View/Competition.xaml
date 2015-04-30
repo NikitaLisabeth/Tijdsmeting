@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:vm="clr-namespace:Tijdsmeting.ViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="350" d:DesignWidth="525">
+             d:DesignHeight="1000" d:DesignWidth="1900">
     <UserControl.DataContext>
         <vm:CompetitionVM/>
     </UserControl.DataContext>
@@ -20,12 +20,12 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
-        <Button Content="Start" FontSize="20" Margin="5" Command="{Binding StartCommand}" />
-        <Button Content="Stop" FontSize="20" Margin="5" Command="{Binding StopCommand}" Grid.Row="1" />
-        <TextBlock Text="Now checked: " Grid.Row="2" VerticalAlignment="Center" Margin="5" FontSize="16"/>
-        <TextBox vm:FocusExtension.IsFocused="{Binding IsFocussed}"  Grid.Column="1" Text="{Binding CheckedRFID , UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" VerticalAlignment="Center" Margin="5" FontSize="16"/>
-        <TextBlock Grid.RowSpan="2" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Path=Timer , UpdateSourceTrigger=PropertyChanged}"  Grid.Column="1" />
-        <DataGrid Grid.Row="3" Grid.ColumnSpan="2"  ItemsSource="{Binding Runners}" CanUserSortColumns="False" CanUserResizeColumns="False" CanUserReorderColumns="False" AutoGenerateColumns="False" >
+        <Button Style="{StaticResource ButtonStyle}" FontSize="45" Width="750"  Content="Start" Command="{Binding StartCommand}" />
+        <Button  Style="{StaticResource ButtonStyle}" Width="750" Content="Stop"  Command="{Binding StopCommand}" Grid.Row="1" />
+        <TextBlock Style="{StaticResource TextblockStyle}" Text="Now checked: " Grid.Row="2" VerticalAlignment="Center"/>
+        <TextBox Style="{StaticResource TextboxStyle}" vm:FocusExtension.IsFocused="{Binding IsFocussed}"  Grid.Column="1" Text="{Binding CheckedRFID , UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" VerticalAlignment="Center"/>
+        <TextBlock Grid.RowSpan="2" FontSize="75" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Path=Timer , UpdateSourceTrigger=PropertyChanged}"  Grid.Column="1" />        
+        <DataGrid  Style="{StaticResource DataGridStyle}" Grid.Row="3" Grid.ColumnSpan="2"  ItemsSource="{Binding Runners}" CanUserSortColumns="False" CanUserResizeColumns="False" CanUserReorderColumns="False" AutoGenerateColumns="False" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" ClipboardContentBinding="{x:Null}"/>
                 <DataGridTextColumn Header="First name" Binding="{Binding Firstname}" ClipboardContentBinding="{x:Null}"/>

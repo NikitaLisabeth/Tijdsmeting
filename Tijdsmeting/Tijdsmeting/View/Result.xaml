@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:vm="clr-namespace:Tijdsmeting.ViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="350" d:DesignWidth="525">
+             d:DesignHeight="1000" d:DesignWidth="1900">
     <UserControl.DataContext>
         <vm:ResultVM/>
     </UserControl.DataContext>
@@ -15,6 +15,12 @@
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
         <TextBlock Text="Results" FontSize="35" Margin="5" VerticalAlignment="Center"/>
-        <ListBox ItemsSource="{Binding Runners}" Grid.Row="1" Margin="5" />
+        <DataGrid Style="{StaticResource DataGridStyle}" Grid.Row="3" Grid.ColumnSpan="2"  ItemsSource="{Binding Runners}"  CanUserSortColumns="False" CanUserResizeColumns="False" CanUserReorderColumns="False" AutoGenerateColumns="False" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" ClipboardContentBinding="{x:Null}"/>
+                <DataGridTextColumn Header="First name" Binding="{Binding Firstname}" ClipboardContentBinding="{x:Null}"/>
+                <DataGridTextColumn  SortMemberPath="DriveType" Header="Finish" Binding="{Binding Finish}" ClipboardContentBinding="{x:Null}" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>

@@ -24,5 +24,10 @@ namespace Tijdsmeting.View
         {
             InitializeComponent();
         }
+
+        private void DataGrid_Sorting(object sender, DataGridSortingEventArgs e)
+        {
+
+        }
     }
 }

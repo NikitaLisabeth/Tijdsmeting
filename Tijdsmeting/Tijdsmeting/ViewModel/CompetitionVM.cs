@@ -109,6 +109,7 @@ namespace Tijdsmeting.ViewModel
                     }
                     else
                     {
+                        Console.WriteLine(checkedRunner.Name + " finish");
                         TakePicture(checkedRunner);
                         checkedRunner.Finish = currentTime;
                     }
@@ -140,6 +141,7 @@ namespace Tijdsmeting.ViewModel
         {
             get { return new RelayCommand(Stop); }
         }
+        
         #region Timer
         private void setTimer()
         {
@@ -159,6 +161,7 @@ namespace Tijdsmeting.ViewModel
         }
         public void StartTimer()
         {
+            SetCamera();
             _startTime = DateTime.Now;
             dispatcherTimerReadCode.Start();
            dispatcherTimerStopwatch.Start();
@@ -182,9 +185,47 @@ namespace Tijdsmeting.ViewModel
             req.Credentials = cc;
             HttpWebResponse res = (HttpWebResponse)req.GetResponse();
         }
+
         private void GetImage(Runner checkedRunner)
         {
-            SetCamera();
+            Console.WriteLine("get image");
+
+           //SetCamera();
+            //string link = string.Format("https://{0}/axis-cgi/mjpg/video.cgi?nbrofframes=1", IPADDRESS);
+
+            /*string link = string.Format("http://{0}/axis-cgi/jpg/image.cgi?resolution=320x240", IPADDRESS);
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(link);
+            req.Timeout = Timeout.Infinite;
+            req.KeepAlive = true;
+            CredentialCache cc = new CredentialCache();
+            cc.Add(
+                new Uri(link),
+                "Basic",
+                new NetworkCredential(LOGIN, PASSWORD));
+            req.Credentials = cc;
+
+            req.Proxy = null;
+           /* IWebProxy proxy = req.Proxy;
+            if (req.Proxy != null)
+            {
+                Console.WriteLine("Removing proxy: {0}", proxy.GetProxy(req.RequestUri));
+                IWebProxy proxyNew = new WebProxy("127.0.0.1",8888);
+                req.Proxy = null;
+            } 
+
+
+            System.Net.ServicePointManager.Expect100Continue = false;
+            HttpWebResponse res = null;
+
+            try
+            {
+                res = (HttpWebResponse)req.GetResponse();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Niet gelukt");
+                throw ex;
+            }*/
             string link = string.Format("http://{0}/axis-cgi/jpg/image.cgi", IPADDRESS);
             HttpWebRequest req = (HttpWebRequest)WebRequest.Create(link);
             CredentialCache cc = new CredentialCache();
@@ -194,28 +235,35 @@ namespace Tijdsmeting.ViewModel
                 new NetworkCredential(LOGIN, PASSWORD));
             req.Credentials = cc;
             HttpWebResponse res = (HttpWebResponse)req.GetResponse();
-            //this.Dispatcher.Invoke((Action)(() =>
-           // {
-                using (BinaryReader reader = new BinaryReader(res.GetResponseStream()))
-                {
-                    Byte[] lnByte = reader.ReadBytes(1 * 1024 * 1024 * 10);
-                    Image = ToImage(lnByte);
+            using (BinaryReader reader = new BinaryReader(res.GetResponseStream()))
+            {
+                Byte[] lnByte = reader.ReadBytes(1 * 1024 * 1024 * 10);
+                Image = ToImage(lnByte);
 
-                    
+                JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+                string photoID = "Finish";
+                String photolocation = photoID.ToString() + checkedRunner.Name + checkedRunner.Firstname + ".jpg";  //file name 
 
-                    JpegBitmapEncoder encoder = new JpegBitmapEncoder();
-                    string photoID = "Finish";
-                    String photolocation = photoID.ToString() +checkedRunner.Name+checkedRunner.Firstname+ ".jpg";  //file name 
+                encoder.Frames.Add(BitmapFrame.Create(Image));
 
-                    encoder.Frames.Add(BitmapFrame.Create(Image));
+                using (var filestream = new FileStream(photolocation, FileMode.Create))
+                    encoder.Save(filestream);
 
-                    using (var filestream = new FileStream(photolocation, FileMode.Create))
-                        encoder.Save(filestream);
-                    checkedRunner.Image = photolocation;
-                    rep.UpdateRunner(checkedRunner);
-                }
-            //}));
+                checkedRunner.Image = photolocation;
+                rep.UpdateRunner(checkedRunner);
+
+                Console.WriteLine("einde get image");
+                reader.Read();
+            }
+            //res.GetResponseStream().EndRead(test);
+            res.GetResponseStream().Close();
+            res.Close();
+            GC.Collect();
+            
         }
+        private void test(IAsyncResult e)
+        { }
+
         private BitmapImage ToImage(byte[] array)
         {
             using (var ms = new System.IO.MemoryStream(array))
