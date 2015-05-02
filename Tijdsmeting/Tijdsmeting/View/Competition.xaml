@@ -23,7 +23,7 @@
         <Button Style="{StaticResource ButtonStyle}" FontSize="45" Width="750"  Content="Start" Command="{Binding StartCommand}" />
         <Button  Style="{StaticResource ButtonStyle}" Width="750" Content="Stop"  Command="{Binding StopCommand}" Grid.Row="1" />
         <TextBlock Style="{StaticResource TextblockStyle}" Text="Now checked: " Grid.Row="2" VerticalAlignment="Center"/>
-        <TextBox Style="{StaticResource TextboxStyle}" vm:FocusExtension.IsFocused="{Binding IsFocussed}"  Grid.Column="1" Text="{Binding CheckedRFID , UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" VerticalAlignment="Center"/>
+        <TextBox Style="{StaticResource TextboxStyle}" vm:FocusExtension.IsFocused="{Binding IsFocussed, UpdateSourceTrigger=LostFocus}"  Grid.Column="1" Text="{Binding CheckedRFID , UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" VerticalAlignment="Center"/>
         <TextBlock Grid.RowSpan="2" FontSize="75" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Path=Timer , UpdateSourceTrigger=PropertyChanged}"  Grid.Column="1" />        
         <DataGrid  Style="{StaticResource DataGridStyle}" Grid.Row="3" Grid.ColumnSpan="2"  ItemsSource="{Binding Runners}" CanUserSortColumns="False" CanUserResizeColumns="False" CanUserReorderColumns="False" AutoGenerateColumns="False" >
             <DataGrid.Columns>
