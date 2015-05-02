@@ -14,36 +14,47 @@ namespace Tijdsmeting.ViewModel
 {
     class RegistrationVM : ObservableObject, IPage
     {
+        #region "Properties"
+        public RunnerRepository Rep { get; set; }
+        public bool GreenLight { get; set; }
         public string Name
         {
             get { return "Registration"; }
         }
-        public RegistrationVM()
-        {
 
-            Runners = new Dictionary<string, string>();
-            IsUserNameFocused = false;
-            timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(1);
-            timer.Tick += timer_Tick;
-        }
-        public DispatcherTimer timer { get; set; }
-        private bool _isUserNameFocused;
+        private bool _isRFIDFocused;
 
-        public bool IsUserNameFocused
+        public bool IsRFIDFocused
         {
-            get { return _isUserNameFocused; }
-            set { _isUserNameFocused = value; OnPropertyChanged("IsUserNameFocused"); }
+            get { return _isRFIDFocused; }
+            set { _isRFIDFocused = value; OnPropertyChanged("IsRFIDFocused"); }
         }
-        
+
+        private bool _isBarcodeFocused;
+
+        public bool IsBarcodeFocused
+        {
+            get { return _isBarcodeFocused; }
+            set { _isBarcodeFocused = value; OnPropertyChanged("IsBarcodeFocused"); }
+        }
+
         private string _barcode;
 
         public string Barcode
         {
             get { return _barcode; }
-            set { _barcode = value; 
-                StartTimer();  
-                OnPropertyChanged("Barcode"); }
+            set
+            {
+                _barcode = value;
+                OnPropertyChanged("Barcode");
+                GreenLight = true;
+                if (_barcode.Count() == 9)
+                { 
+                    IsRFIDFocused = true;
+                    IsBarcodeFocused = false;
+                }
+                    
+            }
         }
 
         private string _rfid;
@@ -51,55 +62,59 @@ namespace Tijdsmeting.ViewModel
         public string RFID
         {
             get { return _rfid; }
-            set { _rfid = value; OnPropertyChanged("RFID"); }
+            set 
+            { 
+                _rfid = value; 
+                OnPropertyChanged("RFID");
+                GreenLight = true;
+                if (_rfid.Count() == 8 && GreenLight == true)
+                { 
+                    IsBarcodeFocused = true;
+                    IsRFIDFocused = false;
+                    Save();
+                }
+                    
+            }
         }
 
-        public Dictionary<string,string> Runners { get; set; }
+#endregion 
+        public RegistrationVM()
+        {
+            Rep = new RunnerRepository();
+            IsBarcodeFocused = true;
+            IsRFIDFocused = false;
+            GreenLight = true;
+        }
+
         private void Save()
         {
             try
             {
 
                 Console.WriteLine(RFID + " " + Barcode);
-                Runners.Add(RFID, Barcode);
-                Runner runPerson = new Runner();                
-                RunnerRepository rep = new RunnerRepository();
-                runPerson = rep.GetRunnerByBarcode(Barcode);
-                if (runPerson.RFID != null)
+                Runner runner = new Runner();                
+                runner = Rep.GetRunnerByBarcode(Barcode);
+                if (runner.RFID != null)
                 {
                     MessageBox.Show("U bent al geregistreerd!");
                 }
                 else
                 {
-                    runPerson.RFID = RFID;
-                    rep.UpdateRunner(runPerson);
+                    runner.RFID = RFID;
+                    Rep.UpdateRunner(runner);
                 }
             }
             catch (Exception)
             {
                 MessageBox.Show("Gelieve de waarden te controleren");
+                GreenLight = false;
+                return;
             }
             
             Barcode = "";
             RFID = "";
         }
 
-        private void StartTimer()
-        {
-            if (timer.IsEnabled == false)
-            {
-                timer.Start();
-            }
-        }
-
-        void timer_Tick(object sender, EventArgs e)
-        {
-            if (Barcode != null && Barcode != "")
-            {
-                IsUserNameFocused = true;
-            }
-            timer.Stop();
-        }
         public ICommand SaveCommand
         {
             get { return new RelayCommand(Save); }

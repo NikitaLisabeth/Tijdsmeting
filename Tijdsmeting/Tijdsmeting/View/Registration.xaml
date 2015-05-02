@@ -24,8 +24,8 @@
         <TextBlock Style="{StaticResource TextblockStyle}" Text="Barcode: " VerticalAlignment="Center" />
         <TextBlock Style="{StaticResource TextblockStyle}" Grid.Row="2" Text="RFID: " VerticalAlignment="Center" />
 
-        <TextBox Style="{StaticResource TextboxStyle}" Grid.Row="1"  Text="{Binding Path=Barcode , UpdateSourceTrigger=PropertyChanged}" Name="txbBarcode" />
-        <TextBox Style="{StaticResource TextboxStyle}" Grid.Row="3" vm:FocusExtension.IsFocused="{Binding IsUserNameFocused}" Text="{Binding Path=RFID}"  Name="txbRFID"  />
+        <TextBox Style="{StaticResource TextboxStyle}" Grid.Row="1" vm:FocusExtension.IsFocused="{Binding IsBarcodeFocused}" Text="{Binding Path=Barcode , UpdateSourceTrigger=PropertyChanged}" Name="txbBarcode" />
+        <TextBox Style="{StaticResource TextboxStyle}" Grid.Row="3" vm:FocusExtension.IsFocused="{Binding IsRFIDFocused}" Text="{Binding Path=RFID, UpdateSourceTrigger=PropertyChanged}"  Name="txbRFID"  />
         <Button Style="{StaticResource ButtonStyle}" Width="750" Grid.RowSpan="2" Grid.Row="5" Margin="5" Name="btnSave" Content="SAVE" Command="{Binding SaveCommand}"/>
     </Grid>
 </UserControl>
