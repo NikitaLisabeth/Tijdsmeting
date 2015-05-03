@@ -7,6 +7,9 @@
     <Window.DataContext>
         <vm:ApplicationVM/>
     </Window.DataContext>
+    <Window.Background>
+        <ImageBrush ImageSource="/Resources/bg.jpg"></ImageBrush>
+    </Window.Background>
     <Window.Resources>
         
         <DataTemplate DataType="{x:Type vm:RegistrationVM}">

@@ -6,11 +6,14 @@
         <Style x:Key="TextblockStyle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="30"/>
             <Setter Property="Margin" Value="25"/>
+            <Setter Property="Foreground" Value="WhiteSmoke"/>
         </Style>
         <Style x:Key="TextboxStyle" TargetType="TextBox">
             <Setter Property="FontSize" Value="30"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="Margin" Value="25,15"/>
+            <Setter Property="Background" Value="#444444"/>
+            <Setter Property="Foreground" Value="WhiteSmoke"/>
         </Style>
         <Style x:Key="ButtonStyle" TargetType="Button">
             <Setter Property="FontSize" Value="50"/>

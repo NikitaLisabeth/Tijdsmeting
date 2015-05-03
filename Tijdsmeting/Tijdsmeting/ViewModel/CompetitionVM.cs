@@ -19,44 +19,31 @@ namespace Tijdsmeting.ViewModel
 {
     class CompetitionVM : ObservableObject, IPage
     {
+        #region "Properties"
+
+        RunnerRepository rep = new RunnerRepository();
+
+        private const string IPADDRESS = "172.23.49.1";
+        private const string LOGIN = "student";
+        private const string PASSWORD = "niets";
         public string Name
         {
             get { return "Competition"; }
         }
-        private const string IPADDRESS = "172.23.49.1";
-        private const string LOGIN = "student";
-        private const string PASSWORD = "niets";
-        RunnerRepository rep = new RunnerRepository();
-        public CompetitionVM()
-        {
-            CheckedRFID = "";
-            getRunners();
-            setTimer();
-            IsFocussed = false;
-            dispatcherTimerReadCode = new DispatcherTimer();
-            dispatcherTimerReadCode.Interval = TimeSpan.FromMilliseconds(10);
-            dispatcherTimerReadCode.Tick += dispatcherTimerReadCode_Tick;
-        }
 
-        void dispatcherTimerReadCode_Tick(object sender, EventArgs e)
-        {
-            if (CheckedRFID != "" && CheckedRFID.Count() == 8)
-            {
-                setCheckpoints();
-            }
-        }
         private BitmapImage _image;
         public BitmapImage Image
         {
             get { return _image; }
             set { _image = value; }
         }
+
         private bool _isFocussed;
 
         public bool IsFocussed
         {
             get { return _isFocussed; }
-            set { _isFocussed = value; OnPropertyChanged("IsFocussed"); }
+            set { _isFocussed = true; OnPropertyChanged("IsFocussed"); }
         }
         private string _checkedRFID;
 
@@ -65,12 +52,12 @@ namespace Tijdsmeting.ViewModel
             get { return _checkedRFID; }
             set
             {
-                _checkedRFID = value; 
-                OnPropertyChanged("CheckedRFID"); 
-                //setCheckpoints(); 
+                _checkedRFID = value;
+                OnPropertyChanged("CheckedRFID");
+                if(_checkedRFID.Count() == 8)
+                    setCheckpoints(); 
             }
         }
-        public DispatcherTimer dispatcherTimerReadCode { get; set; }
 
         public DispatcherTimer dispatcherTimerStopwatch { get; set; }
 
@@ -89,6 +76,15 @@ namespace Tijdsmeting.ViewModel
         {
             get { return _runners; }
             set { _runners = value; OnPropertyChanged("Runners"); }
+        }
+
+#endregion
+
+        public CompetitionVM()
+        {
+            CheckedRFID = "";
+            getRunners();
+            setTimer();
         }
 
         public void setCheckpoints()
@@ -132,7 +128,6 @@ namespace Tijdsmeting.ViewModel
 
         private void Stop()
         {
-            dispatcherTimerReadCode.Stop();
             dispatcherTimerStopwatch.Stop();
             ApplicationVM appvm = App.Current.MainWindow.DataContext as ApplicationVM;
             appvm.ChangePage(new ResultVM());
@@ -163,15 +158,15 @@ namespace Tijdsmeting.ViewModel
         {
             SetCamera();
             _startTime = DateTime.Now;
-            dispatcherTimerReadCode.Start();
-           dispatcherTimerStopwatch.Start();
-           IsFocussed = true;
+            dispatcherTimerStopwatch.Start();
+            IsFocussed = true;
         }
         public ICommand StartCommand
         {
             get { return new RelayCommand(StartTimer); }
         }
 #endregion
+
         #region Camera
         private void SetCamera()
         {
@@ -255,14 +250,12 @@ namespace Tijdsmeting.ViewModel
                 Console.WriteLine("einde get image");
                 reader.Read();
             }
-            //res.GetResponseStream().EndRead(test);
             res.GetResponseStream().Close();
             res.Close();
             GC.Collect();
             
         }
-        private void test(IAsyncResult e)
-        { }
+
 
         private BitmapImage ToImage(byte[] array)
         {
