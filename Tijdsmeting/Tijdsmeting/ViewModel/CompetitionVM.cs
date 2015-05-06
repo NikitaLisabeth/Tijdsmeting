@@ -106,7 +106,7 @@ namespace Tijdsmeting.ViewModel
                     else
                     {
                         Console.WriteLine(checkedRunner.Name + " finish");
-                        TakePicture(checkedRunner);
+                        //TakePicture(checkedRunner);
                         checkedRunner.Finish = currentTime;
                     }
                     rep.UpdateRunner(checkedRunner);
@@ -156,7 +156,7 @@ namespace Tijdsmeting.ViewModel
         }
         public void StartTimer()
         {
-            SetCamera();
+            //SetCamera();
             _startTime = DateTime.Now;
             dispatcherTimerStopwatch.Start();
             IsFocussed = true;
